@@ -7,11 +7,11 @@ apt update
 apt install sshpass
 ssh-keygen -t rsa -q -N "" -f ~/.ssh/id_rsa
 ssh-keyscan -H server1 >> ~/.ssh/known_hosts
-#server2 can ssh to server1
+#server2 to server1
 sshpass -p vagrant ssh-copy-id -i ~/.ssh/id_rsa.pub vagrant@server1
 cp ~/.ssh/id_rsa /home/vagrant/.ssh
 chmod 0444 /home/vagrant/.ssh/id_rsa
-#server1 to connect to server2
+#server1 to server2
 scp -B vagrant@server1:~/.ssh/id_rsa.pub  ~/.ssh/tmp
 cat ~/.ssh/tmp >> /home/vagrant/.ssh/authorized_keys
 rm ~/.ssh/tmp
